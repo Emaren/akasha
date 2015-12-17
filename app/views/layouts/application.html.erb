@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Akasha</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,7 +11,47 @@
 
   <%= link_to "New Post", new_post_path %>
 
-<%= yield %>
+  <div id="sidebar">
+    <div id="logo">
+      <%= link_to root_path do %>
+        <%= image_tag "a.jpg", height: '60', width: '80' %>
+        <% end %>
+      </div>
+
+      <ul>
+        <li class="category">Website</li>
+        <li><%= link_to "Blog", root_path %></li>
+        <li><%= link_to "About" %></li>
+      </ul>
+
+      <ul>
+        <li class="category">Social</li>
+        <li><a href="https://twitter.com">Twitter</a></li>
+        <li><a href="https://youtube.com">Youtube</a></li>
+        <li><a href="https://wikipedia.com">Wikipedia</a></li>
+        <li><a href="mailto:tonyblum@me.com">Email</a></li>
+      </ul>
+
+      <p class="sign_in">Admin Login</p>
+  </div>
+
+  <div id="main_content">
+    <div id="header">
+      <p class="ap">All Posts</p>
+
+      <div class="buttons">
+        <button class="buttonnp"><%= link_to "New Post", new_post_path %></button>
+        <button class="buttonlo">Log Out</button>
+      </div>
+    </div>
+
+
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "Alert") %>
+    <% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
