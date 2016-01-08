@@ -1,3 +1,5 @@
+<br>
+
 <div id="post_content">
 
   <h1 class="title">
@@ -5,13 +7,28 @@
   </h1>
 
   <p class="date">
-    Submitted <%= time_ago_in_words(@post.created_at) %> ago
+    <em>Submitted <%= time_ago_in_words(@post.created_at) %> ago</em>
+
+    <div class="links">
+
+      | <%= link_to "Back", root_path %>
+      | <%= link_to "Edit", edit_post_path(@post) %>
+      | <%= link_to "Delete", post_path(@post), method: :delete, data: { alert: "Confirm Deletion?"} %> |
+
+    </div>
   </p>
 
-  <div class="links">
-    <%= link_to "Back", root_path %>
-    <%= link_to "Edit", edit_post_path(@post) %>
-    <%= link_to "Delete", post_path(@post), method: :delete, data: { alert: "Confirm Deletion?"} %>
+
+  <p class="body">
+    <%= @post.body %>
+  </p>
+
+  <div id="comments">
+    <h2><%= @post.comments.count %> comments</h2>
+    <%= render @post.comments %>
+
+    <h3>Add a comment:</h3>
+    <%= render "comments/form" %>
   </div>
 
 </div>

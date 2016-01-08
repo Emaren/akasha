@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <%= link_to "New Post", new_post_path %>
+<br>
 
   <div id="sidebar">
     <div id="logo">
@@ -37,11 +37,11 @@
 
   <div id="main_content">
     <div id="header">
-      <p class="ap">All Posts</p>
 
       <div class="buttons">
+        <p class="ap"><%= link_to "All Posts", posts_path %></p>
         <button class="buttonnp"><%= link_to "New Post", new_post_path %></button>
-        <button class="buttonlo">Log Out</button>
+        <button class="buttonlo"><%= link_to "Log Out", new_post_path %></button>
       </div>
     </div>
 
