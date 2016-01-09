@@ -111,6 +111,21 @@
  	}
  }
 
+ .buttonli {
+ 	outline: none;
+ 	background: transparent;
+ 	border: 1px solid #d6dce0;
+ 	padding: .5em 1.5em;
+ 	border-radius: 1.5em;
+ 	&:hover {
+ 		border: 1px solid #068025;
+ 		color: #068025;
+ 		a {
+ 			color: #068025 !important;
+ 		}
+ 	}
+ }
+
  .clearfix:after {
     content: ".";
     visibility: hidden;
@@ -239,12 +254,10 @@
  			}
  		}
  	}
+
  	#page_wrapper {
  		padding: 3em;
-
-
  			img {
-
  				width: 100px;
         height: 100px;
  				border-radius: 0.35em;
@@ -305,15 +318,15 @@
  }
 
  .ap {
-
    &:hover {
-
      color: #4110cb;
-
    	a {
     			color: #1b1cbe !important;
   		}
-
     }
+ }
 
+ .alerts {
+   position: absolute;
+   padding-left: 1000px;
  }

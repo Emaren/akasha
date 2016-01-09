@@ -32,23 +32,30 @@
         <li><a href="mailto:tonyblum@me.com">Email</a></li>
       </ul>
 
+      <% if !user_signed_in? %>
       <p class="sign_in"><%= link_to "Admin Login" %></p>
+      <% end %>
   </div>
 
   <div id="main_content">
     <div id="header">
 
+      <% if user_signed_in? %>
       <div class="buttons">
         <p class="ap"><%= link_to "All Posts", posts_path %></p>
         <button class="buttonnp"><%= link_to "New Post", new_post_path %></button>
-        <button class="buttonlo"><%= link_to "Log Out", new_post_path %></button>
+        <button class="buttonlo"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
       </div>
+        <% else %>
+        <button class="buttonli"><%= link_to "Log In", new_user_session_path %></button>
+      <% end %>
     </div>
 
-
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "Alert") %>
-    <% end %>
+      <div class="alerts">
+        <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "Alert") %>
+        <% end %>
+      </div>
 
     <%= yield %>
   </div>
